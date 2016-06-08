@@ -5,6 +5,8 @@ VisualStudioVersion = 14.0.25123.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Bricksharp.Firmware", "Bricksharp.Firmware\Bricksharp.Firmware.csproj", "{D968B7C9-75D2-44D7-AA33-36B08EFD0875}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Bricksharp.Sample", "Bricksharp.Sample\Bricksharp.Sample.csproj", "{24C717B9-4604-4AD9-9A45-7EC3C0A49973}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,10 @@ Global
 		{D968B7C9-75D2-44D7-AA33-36B08EFD0875}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D968B7C9-75D2-44D7-AA33-36B08EFD0875}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D968B7C9-75D2-44D7-AA33-36B08EFD0875}.Release|Any CPU.Build.0 = Release|Any CPU
+		{24C717B9-4604-4AD9-9A45-7EC3C0A49973}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{24C717B9-4604-4AD9-9A45-7EC3C0A49973}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{24C717B9-4604-4AD9-9A45-7EC3C0A49973}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{24C717B9-4604-4AD9-9A45-7EC3C0A49973}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

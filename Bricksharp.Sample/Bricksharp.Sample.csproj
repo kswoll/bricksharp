@@ -6,11 +6,11 @@
     <ProductVersion>8.0.30703</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectTypeGuids>{C6F10C0B-C1F0-4F18-A597-8A7E9EB1A480};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
-    <ProjectGuid>{D968B7C9-75D2-44D7-AA33-36B08EFD0875}</ProjectGuid>
-    <OutputType>Library</OutputType>
+    <ProjectGuid>{24C717B9-4604-4AD9-9A45-7EC3C0A49973}</ProjectGuid>
+    <OutputType>Exe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Bricksharp.Firmware</RootNamespace>
-    <AssemblyName>Bricksharp.Firmware</AssemblyName>
+    <RootNamespace>Bricksharp.Sample</RootNamespace>
+    <AssemblyName>Bricksharp.Sample</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
@@ -42,19 +42,24 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Leds\Led.cs" />
-    <Compile Include="Leds\LedColor.cs" />
-    <Compile Include="Leds\LedPosition.cs" />
+    <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Utils\" />
+    <ProjectReference Include="..\Bricksharp.Firmware\Bricksharp.Firmware.csproj">
+      <Project>{d968b7c9-75d2-44d7-aa33-36b08efd0875}</Project>
+      <Name>Bricksharp.Firmware</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <ProjectExtensions>
     <VisualStudio>
       <FlavorProperties GUID="{C6F10C0B-C1F0-4F18-A597-8A7E9EB1A480}" Configuration="Debug|Any CPU">
-        <MonoProgramFlavorCfg />
+        <MonoProgramFlavorCfg>
+          <HostProperty>192.168.137.3</HostProperty>
+          <UsernameProperty>robot</UsernameProperty>
+          <DestinationProperty>apps</DestinationProperty>
+        </MonoProgramFlavorCfg>
       </FlavorProperties>
       <FlavorProperties GUID="{C6F10C0B-C1F0-4F18-A597-8A7E9EB1A480}" Configuration="Release|Any CPU">
         <MonoProgramFlavorCfg />
