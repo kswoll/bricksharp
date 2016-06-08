@@ -1,25 +1,27 @@
 ﻿using System.IO;
+using Bricksharp.Firmware.Classes;
 
 namespace Bricksharp.Firmware.Leds
 {
-    public class Led
+    public class Led : Class
     {
         public LedColor Color { get; }
         public LedPosition Position { get; }
-        public string Folder => $"/sys/class/leds/ev3:{Position.ToString().ToLower()}:{Color.ToString().ToLower()}:ev3dev";
 
-        private string BrightnessFile => Path.Combine(Folder, "brightness");
+        private const string BrightnessKey = "brightness";
 
-        public Led(LedColor color, LedPosition position)
+        public Led(LedColor color, LedPosition position) : base(new DirectoryInfo($"/sys/class/leds/ev3:{position.ToString().ToLower()}:{color.ToString().ToLower()}:ev3dev"))
         {
             Color = color;
             Position = position;
+
+            AddProperty(new ClassProperty(Folder, BrightnessKey));
         }
 
         public byte Brightness
         {
-            get { return byte.Parse(File.ReadAllText(BrightnessFile)); }
-            set { File.WriteAllText(BrightnessFile, value.ToString()); }
+            get { return Properties[BrightnessKey].GetValue<byte>(); }
+            set { Properties[BrightnessKey].SetValue(value); }
         }
     }
 }

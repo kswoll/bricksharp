@@ -13,7 +13,8 @@ namespace Bricksharp.Sample
             try
             {
                 new Led(LedColor.Red, LedPosition.Left).Brightness = 255;
-                Console.WriteLine("Set led");
+                new Led(LedColor.Green, LedPosition.Left).Brightness = 0;
+                Console.WriteLine("Set led 2");
             }
             catch (Exception e)
             {

@@ -42,6 +42,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Classes\Class.cs" />
+    <Compile Include="Classes\ClassProperty.cs" />
     <Compile Include="Leds\Led.cs" />
     <Compile Include="Leds\LedColor.cs" />
     <Compile Include="Leds\LedPosition.cs" />
