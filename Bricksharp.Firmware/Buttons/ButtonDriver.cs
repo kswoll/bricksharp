@@ -31,7 +31,6 @@ namespace Bricksharp.Firmware.Buttons
                 {
                     while (true)
                     {
-                        Console.WriteLine("Iteration");
                         var seconds = reader.ReadUInt32();
                         var microseconds = reader.ReadUInt32();
 
@@ -46,7 +45,7 @@ namespace Bricksharp.Firmware.Buttons
 
                         if (type != 0)
                         {
-                            Console.WriteLine($"second: {seconds}, microseconds: {microseconds}, type: {type}, code: {code}, value: {value}");
+//                            Console.WriteLine($"second: {seconds}, microseconds: {microseconds}, type: {type}, code: {code}, value: {value}");
 
                             var key = (ButtonKey)code;
                             var isPressed = value == 0;
@@ -55,7 +54,6 @@ namespace Bricksharp.Firmware.Buttons
                             else
                                 OnReleased(key);
                         }
-                        Console.WriteLine("Iteration complete");
                     }
                 }
             });

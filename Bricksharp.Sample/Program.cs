@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading;
 using Bricksharp.Firmware.Buttons;
 using Bricksharp.Firmware.Leds;
+using Bricksharp.Firmware.Sensors;
 
 namespace Bricksharp.Sample
 {
@@ -16,6 +17,9 @@ namespace Bricksharp.Sample
             {
                 Led.Left.Red.Brightness = 0;
                 Led.Left.Green.Brightness = 0;
+
+                var touchSensor = new TouchSensor(0);
+                touchSensor.Changed += b => Console.WriteLine($"Changed: {b}");
 
 /*
                 while (true)

@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 
@@ -13,6 +14,7 @@ namespace Bricksharp.Firmware.Classes
 
         protected Class(string path)
         {
+            Console.WriteLine(path);
             Folder = new DirectoryInfo(Path.Combine("/sys/class", path));
         }
 
