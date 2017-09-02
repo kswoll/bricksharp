@@ -20,13 +20,18 @@ namespace Bricksharp.Firmware.Sensors
             var value0 = File.ReadAllText($"{Folder}/value0");
             Console.WriteLine(value0);
 
+            var lastValue = value0;
             var thread = new Thread(() =>
             {
                 Console.WriteLine("Started Sensor");
                 while (true)
                 {
-                    var value = File.ReadAllText($"{Folder}/value0");
-                    Console.WriteLine(value);
+                    var value = File.ReadAllText($"{Folder}/value0").Trim();
+                    if (value != lastValue)
+                    {
+                        OnChanged(value == "1");
+                        lastValue = value;
+                    }
                     Thread.Sleep(10);
                 }
             });
