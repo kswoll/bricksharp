@@ -6,7 +6,7 @@ namespace Bricksharp.Firmware.Buttons
 {
     /// <summary>
     /// Administers a thread which watches the key file (/dev/input/by-path/platform-gpio-keys.0-event) and emits
-    /// events for key press/release to which consumerse may subscribe.  
+    /// events for key press/release to which consumerse may subscribe.
     /// </summary>
     internal class ButtonDriver
     {
@@ -26,23 +26,27 @@ namespace Bricksharp.Firmware.Buttons
             isInitialized = true;
             Task.Run(() =>
             {
+                Console.WriteLine("Started ButtonDriver");
                 using (var reader = new BinaryReader(new FileStream(keys.FullName, FileMode.Open, FileAccess.Read)))
                 {
                     while (true)
                     {
-                        reader.ReadUInt64();    // seconds -- don't care
-                        reader.ReadUInt64();    // microseconds -- don't care
+                        Console.WriteLine("Iteration");
+                        var seconds = reader.ReadUInt32();
+                        var microseconds = reader.ReadUInt32();
 
                         // Two packets are sent each time a key is pressed and another two when it's released.  As the second packet
                         // has a type of zero and no useful data, I'm not sure why that is, but for our purposes, just ignore input
                         // with a type of zero.
                         var type = reader.ReadUInt16();
 
+                        var code = reader.ReadUInt16();
+                        var value = reader.ReadUInt32();
+//                        Console.WriteLine(type);
+
                         if (type != 0)
                         {
-                            var code = reader.ReadUInt16();
-                            var value = reader.ReadUInt32();
-//                            Console.WriteLine($"second: {seconds}, microseconds: {microseconds}, type: {type}, code: {code}, value: {value}");
+                            Console.WriteLine($"second: {seconds}, microseconds: {microseconds}, type: {type}, code: {code}, value: {value}");
 
                             var key = (ButtonKey)code;
                             var isPressed = value == 0;
@@ -51,9 +55,10 @@ namespace Bricksharp.Firmware.Buttons
                             else
                                 OnReleased(key);
                         }
+                        Console.WriteLine("Iteration complete");
                     }
                 }
-            });            
+            });
         }
 
         private static Button GetButton(ButtonKey key)
