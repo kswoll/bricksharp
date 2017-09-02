@@ -43,8 +43,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Buttons\Button.cs" />
+    <Compile Include="Buttons\ButtonDriver.cs" />
+    <Compile Include="Buttons\ButtonKey.cs" />
     <Compile Include="Classes\Class.cs" />
     <Compile Include="Classes\ClassProperty.cs" />
+    <Compile Include="Lcds\Lcd.cs" />
     <Compile Include="Leds\Led.cs" />
     <Compile Include="Leds\LedColor.cs" />
     <Compile Include="Leds\LedPosition.cs" />
