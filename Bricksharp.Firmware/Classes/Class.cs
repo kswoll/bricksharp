@@ -9,18 +9,11 @@ namespace Bricksharp.Firmware.Classes
         public DirectoryInfo Folder { get; }
         public IReadOnlyDictionary<string, ClassProperty> Properties => properties;
 
-        private readonly Dictionary<string, ClassProperty> properties;
+        private readonly Dictionary<string, ClassProperty> properties = new Dictionary<string, ClassProperty>();
 
-        protected Class(DirectoryInfo folder, IEnumerable<ClassProperty> properties)
+        protected Class(string path)
         {
-            Folder = folder;
-            this.properties = properties.ToDictionary(x => x.File.Name, x => x);
-        }
-
-        protected Class(DirectoryInfo folder, params ClassProperty[] properties)
-        {
-            Folder = folder;
-            this.properties = properties.ToDictionary(x => x.File.Name, x => x);
+            Folder = new DirectoryInfo(Path.Combine("/sys/class", path));
         }
 
         protected void AddProperty(ClassProperty property)
