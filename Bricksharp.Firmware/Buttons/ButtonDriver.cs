@@ -26,13 +26,12 @@ namespace Bricksharp.Firmware.Buttons
             isInitialized = true;
             Task.Run(() =>
             {
-                Console.WriteLine("Started ButtonDriver");
                 using (var reader = new BinaryReader(new FileStream(keys.FullName, FileMode.Open, FileAccess.Read)))
                 {
                     while (true)
                     {
-                        var seconds = reader.ReadUInt32();
-                        var microseconds = reader.ReadUInt32();
+                        /*var seconds = */reader.ReadUInt32();
+                        /*var microseconds = */reader.ReadUInt32();
 
                         // Two packets are sent each time a key is pressed and another two when it's released.  As the second packet
                         // has a type of zero and no useful data, I'm not sure why that is, but for our purposes, just ignore input
@@ -41,7 +40,6 @@ namespace Bricksharp.Firmware.Buttons
 
                         var code = reader.ReadUInt16();
                         var value = reader.ReadUInt32();
-//                        Console.WriteLine(type);
 
                         if (type != 0)
                         {

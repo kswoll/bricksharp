@@ -11,20 +11,20 @@ namespace Bricksharp.Firmware.Leds
         public LedColor Color { get; }
         public LedPosition Position { get; }
 
-        private const string BrightnessKey = "brightness";
+        private readonly ClassProperty brightness;
 
         public Led(LedColor color, LedPosition position) : base($"leds/ev3:{position.ToString().ToLower()}:{color.ToString().ToLower()}:ev3dev")
         {
             Color = color;
             Position = position;
 
-            AddProperty(new ClassProperty(Folder, BrightnessKey));
+            brightness = new ClassProperty(Folder, "brightness");
         }
 
         public byte Brightness
         {
-            get { return Properties[BrightnessKey].GetValue<byte>(); }
-            set { Properties[BrightnessKey].SetValue(value); }
+            get { return brightness.GetValue<byte>(); }
+            set { brightness.SetValue(value); }
         }
 
         public class LedSet

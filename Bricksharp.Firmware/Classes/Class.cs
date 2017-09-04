@@ -8,9 +8,6 @@ namespace Bricksharp.Firmware.Classes
     public abstract class Class
     {
         public DirectoryInfo Folder { get; }
-        public IReadOnlyDictionary<string, ClassProperty> Properties => properties;
-
-        private readonly Dictionary<string, ClassProperty> properties = new Dictionary<string, ClassProperty>();
 
         protected Class(string path)
         {
@@ -18,9 +15,9 @@ namespace Bricksharp.Firmware.Classes
             Folder = new DirectoryInfo(Path.Combine("/sys/class", path));
         }
 
-        protected void AddProperty(ClassProperty property)
+        protected void InvokeCommand(string command)
         {
-            properties.Add(property.File.Name, property);
+            File.WriteAllText(Path.Combine(Folder.FullName, "command"), command);
         }
     }
 }
