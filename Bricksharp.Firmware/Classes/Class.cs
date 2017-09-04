@@ -11,7 +11,7 @@ namespace Bricksharp.Firmware.Classes
 
         protected Class(string path)
         {
-            Console.WriteLine(path);
+//            Console.WriteLine(path);
             Folder = new DirectoryInfo(Path.Combine("/sys/class", path));
         }
 
