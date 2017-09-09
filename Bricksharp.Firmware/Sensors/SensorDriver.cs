@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
 using System.Threading;
+using Bricksharp.Firmware.Classes;
 
 namespace Bricksharp.Firmware.Sensors
 {
@@ -13,9 +14,20 @@ namespace Bricksharp.Firmware.Sensors
         private static readonly List<Sensor> sensors = new List<Sensor>();
         private static readonly List<string> values = new List<string>();
         private static readonly object locker = new object();
+        private static readonly Dictionary<int, DirectoryInfo> sensorFoldersByPort = new Dictionary<int, DirectoryInfo>();
 
         static SensorDriver()
         {
+            var sensorRoot = new DirectoryInfo(Path.Combine(Class.ClassRoot, "lego-sensor"));
+            foreach (var sensorFolder in sensorRoot.GetDirectories())
+            {
+                if (sensorFolder.Name.StartsWith("sensor"))
+                {
+                    var address = int.Parse(File.ReadAllText(Path.Combine(sensorFolder.FullName, "address")).Substring("in".Length));
+                    sensorFoldersByPort[address] = sensorFolder;
+                }
+            }
+
 //            var value0 = File.ReadAllText($"{Folder}/value0");
 //            Console.WriteLine(value0);
 
@@ -48,6 +60,11 @@ namespace Bricksharp.Firmware.Sensors
             });
             thread.IsBackground = true;
             thread.Start();
+        }
+
+        public static DirectoryInfo GetSensorFolder(int port)
+        {
+            return sensorFoldersByPort[port];
         }
 
         internal static void Register(Sensor sensor)

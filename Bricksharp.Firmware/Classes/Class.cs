@@ -7,12 +7,19 @@ namespace Bricksharp.Firmware.Classes
 {
     public abstract class Class
     {
+        public const string ClassRoot = "/sys/class";
+
         public DirectoryInfo Folder { get; }
 
         protected Class(string path)
         {
 //            Console.WriteLine(path);
-            Folder = new DirectoryInfo(Path.Combine("/sys/class", path));
+            Folder = new DirectoryInfo(Path.Combine(ClassRoot, path));
+        }
+
+        protected Class(DirectoryInfo folder)
+        {
+            Folder = folder;
         }
 
         protected void InvokeCommand(string command)

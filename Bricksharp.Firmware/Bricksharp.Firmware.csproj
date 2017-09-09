@@ -55,6 +55,8 @@
     <Compile Include="Motors\TachoMotor.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Sensors\GyroSensor.cs" />
+    <Compile Include="Sensors\NxtLightSensor.cs" />
+    <Compile Include="Sensors\NxtLightSensorMode.cs" />
     <Compile Include="Sensors\Sensor.cs" />
     <Compile Include="Sensors\SensorDriver.cs" />
     <Compile Include="Sensors\TouchSensor.cs" />

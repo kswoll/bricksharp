@@ -31,11 +31,15 @@ namespace Bricksharp.Sample
                 */
                 Button.Back.Pressed += () =>
                 {
-                    Console.WriteLine("foo");
+                    Environment.Exit(0);
                 };
 
-                var gyroSensor = new GyroSensor(1);
-                gyroSensor.Changed += value => Console.WriteLine(value);
+//                var gyroSensor = new GyroSensor(1);
+//                gyroSensor.Changed += value => Console.WriteLine(value);
+
+                var lightSensor = new NxtLightSensor(1);
+                lightSensor.Mode = NxtLightSensorMode.Reflect;
+                lightSensor.Changed += value => Console.WriteLine(value);
 
                 var motor = new TachoMotor(0);
                 motor.Speed = 500;
