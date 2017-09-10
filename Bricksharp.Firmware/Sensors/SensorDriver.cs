@@ -23,7 +23,9 @@ namespace Bricksharp.Firmware.Sensors
             {
                 if (sensorFolder.Name.StartsWith("sensor"))
                 {
-                    var address = int.Parse(File.ReadAllText(Path.Combine(sensorFolder.FullName, "address")).Substring("in".Length));
+                    var addressString = File.ReadAllText(Path.Combine(sensorFolder.FullName, "address"));
+                    var addressParts = addressString.Split(':');
+                    var address = int.Parse(addressParts[0].Substring("in".Length));
                     sensorFoldersByPort[address] = sensorFolder;
                 }
             }

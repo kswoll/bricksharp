@@ -1,7 +1,7 @@
 ﻿using System;
 using System.IO;
 
-namespace Bricksharp.Firmware.Lcds
+namespace Bricksharp.Firmware.Display
 {
     public class Lcd
     {
@@ -38,8 +38,7 @@ namespace Bricksharp.Firmware.Lcds
 
         public static bool GetPixel(int x, int y)
         {
-            byte mask;
-            var offset = GetOffsetAndMask(x, y, out mask);
+            var offset = GetOffsetAndMask(x, y, out byte mask);
             var value = buffer[offset];
             var bit = value & mask;
             return bit != 0;

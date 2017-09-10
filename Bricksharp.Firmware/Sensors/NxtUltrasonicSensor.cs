@@ -4,18 +4,18 @@ using Bricksharp.Firmware.Utils;
 
 namespace Bricksharp.Firmware.Sensors
 {
-    public class NxtLightSensor : Sensor
+    public class NxtUltrasonicSensor : Sensor
     {
         public event Action<int> Changed;
 
-        private readonly EnumClassProperty<NxtLightSensorMode> mode;
+        private readonly EnumClassProperty<NxtUltrasonicSensorMode> mode;
 
-        public NxtLightSensor(int port) : base(port)
+        public NxtUltrasonicSensor(int port) : base(port)
         {
-            mode = new EnumClassProperty<NxtLightSensorMode>(Folder, "mode");
+            mode = new EnumClassProperty<NxtUltrasonicSensorMode>(Folder, "mode");
         }
 
-        public NxtLightSensorMode Mode
+        public NxtUltrasonicSensorMode Mode
         {
             get => mode.Value;
             set => mode.Value = value;

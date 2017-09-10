@@ -37,9 +37,13 @@ namespace Bricksharp.Sample
 //                var gyroSensor = new GyroSensor(1);
 //                gyroSensor.Changed += value => Console.WriteLine(value);
 
-                var lightSensor = new NxtLightSensor(1);
-                lightSensor.Mode = NxtLightSensorMode.Reflect;
-                lightSensor.Changed += value => Console.WriteLine(value);
+//                var lightSensor = new NxtLightSensor(1);
+//                lightSensor.Mode = NxtLightSensorMode.Reflect;
+//                lightSensor.Changed += value => Console.WriteLine(value);
+
+                var ultrasonicSensor = new NxtUltrasonicSensor(1);
+                ultrasonicSensor.Mode = NxtUltrasonicSensorMode.CentimetersContinuous;
+                ultrasonicSensor.Changed += value => Console.WriteLine(value);
 
                 var motor = new TachoMotor(0);
                 motor.Speed = 500;

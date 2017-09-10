@@ -1,7 +1,13 @@
-﻿namespace Bricksharp.Firmware.Sensors
+﻿using System.Runtime.Serialization;
+
+namespace Bricksharp.Firmware.Sensors
 {
     public enum NxtLightSensorMode
     {
-        Reflect, Ambient
+        [EnumMember(Value = "REFLECT")]
+        Reflect,
+
+        [EnumMember(Value = "AMBIENT")]
+        Ambient
     }
 }

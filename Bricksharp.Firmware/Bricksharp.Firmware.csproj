@@ -36,6 +36,7 @@
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -48,7 +49,13 @@
     <Compile Include="Buttons\ButtonKey.cs" />
     <Compile Include="Classes\Class.cs" />
     <Compile Include="Classes\ClassProperty.cs" />
-    <Compile Include="Lcds\Lcd.cs" />
+    <Compile Include="Classes\EnumClassProperty.cs" />
+    <Compile Include="Display\Bitmap.cs" />
+    <Compile Include="Display\BitStreamer.cs" />
+    <Compile Include="Display\CharStreamer.cs" />
+    <Compile Include="Display\Font.cs" />
+    <Compile Include="Display\Lcd.cs" />
+    <Compile Include="Display\Point.cs" />
     <Compile Include="Leds\Led.cs" />
     <Compile Include="Leds\LedColor.cs" />
     <Compile Include="Leds\LedPosition.cs" />
@@ -57,12 +64,19 @@
     <Compile Include="Sensors\GyroSensor.cs" />
     <Compile Include="Sensors\NxtLightSensor.cs" />
     <Compile Include="Sensors\NxtLightSensorMode.cs" />
+    <Compile Include="Sensors\NxtUltrasonicSensor.cs" />
+    <Compile Include="Sensors\NxtUltrasonicSensorMode.cs" />
     <Compile Include="Sensors\Sensor.cs" />
     <Compile Include="Sensors\SensorDriver.cs" />
     <Compile Include="Sensors\TouchSensor.cs" />
+    <Compile Include="Utils\EnumMemberCache.cs" />
+  </ItemGroup>
+  <ItemGroup />
+  <ItemGroup>
+    <EmbeddedResource Include="Resources\profont_7.bin" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Utils\" />
+    <EmbeddedResource Include="Resources\info56_12.bin" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <ProjectExtensions>
