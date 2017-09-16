@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading;
 using Bricksharp.Firmware.Buttons;
+using Bricksharp.Firmware.Display;
 using Bricksharp.Firmware.Leds;
 using Bricksharp.Firmware.Motors;
 using Bricksharp.Firmware.Sensors;
@@ -16,6 +17,8 @@ namespace Bricksharp.Sample
         {
             try
             {
+                LcdConsole.WriteLine("Hello world");
+                return;
                 Led.Left.Red.Brightness = 0;
                 Led.Left.Green.Brightness = 0;
 

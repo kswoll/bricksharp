@@ -50,12 +50,15 @@
     <Compile Include="Classes\Class.cs" />
     <Compile Include="Classes\ClassProperty.cs" />
     <Compile Include="Classes\EnumClassProperty.cs" />
+    <Compile Include="Display\Alignment.cs" />
     <Compile Include="Display\Bitmap.cs" />
     <Compile Include="Display\BitStreamer.cs" />
     <Compile Include="Display\CharStreamer.cs" />
     <Compile Include="Display\Font.cs" />
     <Compile Include="Display\Lcd.cs" />
+    <Compile Include="Display\LcdConsole.cs" />
     <Compile Include="Display\Point.cs" />
+    <Compile Include="Display\Rectangle.cs" />
     <Compile Include="Leds\Led.cs" />
     <Compile Include="Leds\LedColor.cs" />
     <Compile Include="Leds\LedPosition.cs" />
@@ -71,7 +74,11 @@
     <Compile Include="Sensors\Sensor.cs" />
     <Compile Include="Sensors\SensorDriver.cs" />
     <Compile Include="Sensors\TouchSensor.cs" />
+    <Compile Include="Unix\Libc.cs" />
+    <Compile Include="Unix\MemoryArea.cs" />
+    <Compile Include="Unix\UnixDevice.cs" />
     <Compile Include="Utils\EnumMemberCache.cs" />
+    <Compile Include="Utils\IntPtrExtensions.cs" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>

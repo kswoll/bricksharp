@@ -5,8 +5,8 @@ namespace Bricksharp.Firmware.Display
 {
     public class Font
     {
-        public static Font SmallFont { get; } = FromResource(Assembly.GetExecutingAssembly(), "font.profont_7");
-        public static Font MediumFont { get; } = FromResource(Assembly.GetExecutingAssembly(), "font.info56_12");
+        public static Font SmallFont { get; } = FromResource(Assembly.GetExecutingAssembly(), "profont_7");
+        public static Font MediumFont { get; } = FromResource(Assembly.GetExecutingAssembly(), "info56_12");
 
         public uint MaxWidth { get; }
         public uint MaxHeight { get; }
@@ -27,9 +27,12 @@ namespace Bricksharp.Firmware.Display
             this.data = data;
         }
 
-        public static Font FromResource(Assembly asm, string resourceName)
+        public static Font FromResource(Assembly assembly, string resourceName)
         {
-            var stream = asm.GetManifestResourceStream(resourceName);
+            Console.WriteLine(string.Join(", ", assembly.GetManifestResourceNames()));
+            var fullResourceName = $"Bricksharp.Firmware.Resources.{resourceName}.bin";
+            Console.WriteLine(fullResourceName);
+            var stream = assembly.GetManifestResourceStream(fullResourceName);
             var bytedata = new byte[stream.Length];
             stream.Read(bytedata, 0, (int)stream.Length);
             var data = new uint[stream.Length/4];
