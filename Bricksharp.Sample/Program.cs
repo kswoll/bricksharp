@@ -17,8 +17,9 @@ namespace Bricksharp.Sample
         {
             try
             {
-                LcdConsole.WriteLine("Hello world");
-                return;
+//                LcdConsole.WriteLine("Hello world");
+//                LcdConsole.WriteLine("Hello world2");
+//                return;
                 Led.Left.Red.Brightness = 0;
                 Led.Left.Green.Brightness = 0;
 
@@ -44,9 +45,13 @@ namespace Bricksharp.Sample
 //                lightSensor.Mode = NxtLightSensorMode.Reflect;
 //                lightSensor.Changed += value => Console.WriteLine(value);
 
-                var ultrasonicSensor = new NxtUltrasonicSensor(1);
-                ultrasonicSensor.Mode = NxtUltrasonicSensorMode.CentimetersContinuous;
-                ultrasonicSensor.Changed += value => Console.WriteLine(value);
+//                var ultrasonicSensor = new NxtUltrasonicSensor(1);
+//                ultrasonicSensor.Mode = NxtUltrasonicSensorMode.CentimetersContinuous;
+//                ultrasonicSensor.Changed += value => Console.WriteLine(value);
+
+                var ledSensor = new Ev3InfraredSensor(1);
+                ledSensor.Mode = Ev3InfraredSensorMode.Proximity;
+                ledSensor.Value0Changed += value => Console.WriteLine(value);
 
                 var motor = new TachoMotor(0);
                 motor.Speed = 500;
